@@ -1,7 +1,6 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
+import { Pool, neonConfig } from '@neondatabase/serverless';
 import ws from 'ws';
-import * as schema from '../shared/schema';
 
 // Required for serverless WebSocket support
 neonConfig.webSocketConstructor = ws;
@@ -17,18 +16,5 @@ if (!connectionString) {
 // Create a connection pool
 export const pool = new Pool({ connectionString });
 
-// Initialize Drizzle ORM
-export const db = drizzle({
-  client: pool,
-  schema,
-});
-
-// Optional: Test connection at startup
-(async () => {
-  try {
-    const result = await pool.query('SELECT NOW()');
-    console.log('Database connected:', result.rows[0]);
-  } catch (err) {
-    console.error('Database connection failed:', err);
-  }
-})();
+// Initialize Drizzle ORM (without importing the schema here for bundling)
+export const db = drizzle(pool);
