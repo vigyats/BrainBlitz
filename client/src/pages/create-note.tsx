@@ -130,7 +130,7 @@ export default function CreateNote() {
                     name="category"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base">Category</FormLabel>
+                        <FormLabel className="text-base">Note By</FormLabel>
                         <Select 
                           onValueChange={field.onChange} 
                           value={field.value || undefined}
@@ -140,7 +140,7 @@ export default function CreateNote() {
                               className="rounded-xl"
                               data-testid="select-note-category"
                             >
-                              <SelectValue placeholder="Select a category" />
+                              <SelectValue placeholder="Select your name" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
