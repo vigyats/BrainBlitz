@@ -35,12 +35,9 @@ export type InsertNote = z.infer<typeof insertNoteSchema>;
 export type Note = typeof notes.$inferSelect;
 
 export const categories = [
-  "Personal",
-  "Work",
-  "Ideas",
-  "Love",
-  "Dreams",
-  "Memories",
+  "Vigyat",
+  "Sayli",
+  "Other",
 ] as const;
 
 export type Category = typeof categories[number];
